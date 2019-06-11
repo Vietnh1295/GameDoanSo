@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="number" id="Num" min="0" max="100">
+<input type="button" value="Tim Kiem Tuyen Tinh" onclick="TimKiemTuyenTinh()">
+<input type="button" value="Tim Kiem Tuyen Tinh" onclick="TimKiemNhiPhan()">
+<script>
+    var array = [];
+    for (var i = 0; i <= 100; i++) {
+        array[i] = i;
+    }
+    var Num;
+
+    function TimKiemTuyenTinh() {
+        var index = -1;
+        Num = parseInt(document.getElementById('Num').value);
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] == Num) {
+                index = i;
+
+            }
+        }
+
+    }
+    function TimKiemNhiPhan() {
+        var index = -1;
+        Num = parseInt(document.getElementById('Num').value);
+        var min = 0;
+        var max = 101;
+        var i = Math.floor((max + min) / 2);
+        if (Num == array[max - 1]) {
+            index = 100;
+        } else if (Num == array[min]) {
+            index = 0;
+        } else {
+            while (Num != array[i]) {
+                if (i == 100 || i == 0) {
+                    index = -1;
+                    break;
+                } else if (Num > array[i]) {
+                    min = (max + min) / 2;
+                } else if (Num < array[i]) {
+                    max = (max + min) / 2;
+                } else {
+                    break;
+                    index = -1;
+                }
+                i = Math.floor((max + min) / 2);
+                index = i;
+            }
+        }
+        if (index > 0) {
+            alert('Co trong mang va o vi tri ' + index);
+        } else {
+            alert('khong co trong mang');
+        }
+    }
+</script>
+</body>
+</html>
